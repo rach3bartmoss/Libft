@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   print_padding.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopereir <dopereir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 21:17:51 by dopereir          #+#    #+#             */
-/*   Updated: 2024/10/28 01:52:28 by rache            ###   ########.fr       */
+/*   Created: 2024/06/25 20:51:09 by dopereir          #+#    #+#             */
+/*   Updated: 2024/08/08 16:31:15 by dopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void	ft_lstadd_front(t_list **lst, t_list *nw)
+void	print_padding(int length, char pad_char, t_list *op)
 {
-	nw->next = *lst;
-	*lst = nw;
+	int	i;
+
+	i = 0;
+	while (i < length)
+	{
+		ft_putchar(pad_char);
+		i++;
+		op->count++;
+	}
 }

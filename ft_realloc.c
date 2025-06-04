@@ -1,20 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopereir <dopereir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 21:17:51 by dopereir          #+#    #+#             */
-/*   Updated: 2024/10/28 01:52:28 by rache            ###   ########.fr       */
+/*   Created: 2024/10/25 09:22:48 by dopereir          #+#    #+#             */
+/*   Updated: 2024/10/25 09:25:35 by dopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void	ft_lstadd_front(t_list **lst, t_list *nw)
+void	*ft_realloc(void *ptr, size_t oldsize, size_t size)
 {
-	nw->next = *lst;
-	*lst = nw;
+	void	*new;
+	size_t	minsize;
+
+	if (size == 0)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	if (ptr == NULL)
+		return (malloc(size));
+	new = malloc(size);
+	if (!new)
+		return (NULL);
+	minsize = size;
+	if (oldsize < size)
+		minsize = oldsize;
+	ft_memcpy(new, ptr, minsize);
+	while (size - oldsize != 0)
+		((char *)new)[oldsize++] = '\0';
+	free(ptr);
+	return (new);
 }

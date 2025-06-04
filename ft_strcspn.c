@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_strcspn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopereir <dopereir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 21:17:51 by dopereir          #+#    #+#             */
-/*   Updated: 2024/10/28 01:52:28 by rache            ###   ########.fr       */
+/*   Created: 2025/06/04 21:35:08 by dopereir          #+#    #+#             */
+/*   Updated: 2025/06/04 21:51:34 by dopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void	ft_lstadd_front(t_list **lst, t_list *nw)
+size_t	ft_strcspn(char *s1, char *s2)
 {
-	nw->next = *lst;
-	*lst = nw;
+	char	*sc1;
+	char	*sc2;
+
+	sc1 = s1;
+	while (*sc1 != '\0')
+	{
+		sc2 = s2;
+		while (*sc2 != '\0')
+		{
+			if (*sc1 == *sc2)
+				return (sc1 - s1);
+			++sc2;
+		}
+		++sc1;
+	}
+	return (sc1 - s1);
 }

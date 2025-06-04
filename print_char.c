@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopereir <dopereir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 21:17:51 by dopereir          #+#    #+#             */
-/*   Updated: 2024/10/28 01:52:28 by rache            ###   ########.fr       */
+/*   Created: 2024/06/25 20:50:59 by dopereir          #+#    #+#             */
+/*   Updated: 2024/08/17 19:02:10 by dopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void	ft_lstadd_front(t_list **lst, t_list *nw)
+void	print_char(t_flags *flags, t_list *op)
 {
-	nw->next = *lst;
-	*lst = nw;
+	char	c;
+
+	c = va_arg(op->ap, int);
+	if (flags->width > 1 && flags->left_align != '-')
+		print_padding(flags->width - 1, ' ', op);
+	ft_putchar(c);
+	op->count++;
+	if (flags->width > 1 && flags->left_align == '-')
+		print_padding(flags->width - 1, ' ', op);
 }

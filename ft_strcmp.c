@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopereir <dopereir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 21:17:51 by dopereir          #+#    #+#             */
-/*   Updated: 2024/10/28 01:52:28 by rache            ###   ########.fr       */
+/*   Created: 2025/05/29 21:10:16 by dopereir          #+#    #+#             */
+/*   Updated: 2025/05/29 21:11:17 by dopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void	ft_lstadd_front(t_list **lst, t_list *nw)
+int	ft_strcmp(char *s1, char *s2)
 {
-	nw->next = *lst;
-	*lst = nw;
+	int	i;
+
+	i = 0;
+	while ((s1[i] == s2[i]) && s1[i] && s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

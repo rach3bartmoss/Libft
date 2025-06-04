@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   print_sign_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopereir <dopereir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 23:18:56 by dopereir          #+#    #+#             */
-/*   Updated: 2024/10/28 01:53:06 by rache            ###   ########.fr       */
+/*   Created: 2024/07/28 16:23:54 by dopereir          #+#    #+#             */
+/*   Updated: 2024/08/17 19:27:08 by dopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *nw)
+void	print_sign_bonus(t_flags *flags, int value, t_list *op)
 {
-	t_list	*ptr;
-
-	ptr = *lst;
-	if (!*lst)
-	{
-		*lst = nw;
+	if (value == INT_MIN && flags->zero_pad != 1)
 		return ;
-	}
-	while (ptr->next != NULL)
+	else if (value == INT_MIN && flags->zero_pad == 1)
 	{
-		ptr = ptr->next;
+		ft_putchar('-');
+		op->count++;
 	}
-	ptr->next = nw;
-	nw->next = NULL;
+	else if (value < 0 && value != INT_MIN)
+	{
+		ft_putchar('-');
+		op->count++;
+	}
+	else if (flags->padding == '+')
+	{
+		ft_putchar('+');
+		op->count++;
+	}
+	else if (flags->padding == ' ')
+	{
+		ft_putchar(' ');
+		op->count++;
+	}
+	else
+		return ;
 }
